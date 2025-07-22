@@ -3,9 +3,9 @@
 
 /**
  * _printf - function that prints characters and strings
- * @format: the string
+ * @format: the string format
  *
- * Return: the string and its arguments
+ * Return: number of characters printed
  *
  */
 int _printf(const char *format, ...)
