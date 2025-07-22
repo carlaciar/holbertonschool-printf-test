@@ -2,7 +2,7 @@
 #include <stdarg.h>
 
 /**
- * print_string - prints the string from a va_list
+ * print_str - prints the string from a va_list
  * @args: List of arguments/string
  *
  * Return: Number of characters printed

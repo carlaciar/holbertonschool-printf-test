@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * _printf - function that prints characters and strings
@@ -16,15 +17,37 @@ int _printf(const char *format, ...)
 
 	while (format[i] != '\0')
 	{
-		while (format[i] == '%')
+		if (format[i] == '%')
 		{
+			if (format[i + 1] == 'c')
+				count += print_char(args);
+			else if (format[i + 1] == 's')
+				count += print_str(args);
+			else if (format[i + 1] == '%')
+			{
+				_putchar('%');
+				count++;
+			}
+			else if (format[i + 1] == '\0')
+			{
+				_putchar(format[i]);
+				count++;
+			}
+			else
+			{
+				_putchar('%');
+				_putchar(format[i + 1]);
+				count += 2;
+			}
+			i += 2;
+		}
+		else
+		{
+			_putchar(format[i]);
+			count++;
 			i++;
-		
-			if (format[i] == 'c')
-				print_char(args);
 		}
 	}
-
+	va_end(args);
 	return (count);
-	va_end;
 }
